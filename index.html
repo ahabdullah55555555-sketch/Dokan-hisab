@@ -40,15 +40,6 @@ main{max-width:560px;margin:0 auto;padding:14px 14px 110px}
 .total.red b{color:var(--red)}
 .total.green b{color:var(--green)}
 h2.sec{font-size:16px;margin:6px 2px 8px;color:var(--muted)}
-.row{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 12px;margin-bottom:8px;cursor:pointer;animation:rowIn .25s ease-out both}
-.row img.av{width:46px;height:46px;border-radius:50%;flex:0 0 46px;object-fit:cover;background:#eee}
-.row .nm{flex:1;min-width:0}
-.row .nm b{font-size:16px;display:block}
-.row .nm span{font-size:12px;color:var(--muted)}
-.row .amt{font-weight:700;font-size:16px;text-align:right;white-space:nowrap}
-.row .amt.red{color:var(--red)}
-.row .amt.green{color:var(--green)}
-.row .amt small{display:block;font-size:11px;font-weight:400;color:var(--muted)}
 .empty{background:var(--card);border:1px dashed var(--line);border-radius:14px;padding:26px 16px;text-align:center;color:var(--muted)}
 .fab{position:fixed;right:18px;bottom:20px;width:60px;height:60px;border-radius:50%;background:var(--accent);color:#fff;border:none;font-size:32px;line-height:1;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.3);z-index:20;transition:transform .12s ease-out}
 .fab:active{transform:scale(.9)}
@@ -57,11 +48,6 @@ h2.sec{font-size:16px;margin:6px 2px 8px;color:var(--muted)}
 .sheet{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-radius:20px 20px 0 0;box-shadow:0 -4px 24px rgba(0,0,0,.25);max-height:88vh;overflow:auto;z-index:30;padding:16px 16px 24px;max-width:560px;margin:0 auto;display:none}
 .sheet.on{display:block;animation:sheetUp .22s ease-out}
 .sheet h2{font-size:19px;margin-bottom:10px}
-.avgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.avcell{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px 4px 8px;text-align:center;cursor:pointer}
-.avcell.sel{border:2px solid var(--accent)}
-.avcell img{width:52px;height:52px;border-radius:50%;object-fit:cover;background:#eee}
-.avcell span{display:block;font-size:13px;margin-top:4px;line-height:1.3;word-break:break-word}
 .seg{display:flex;gap:8px;margin:12px 0}
 .seg button{flex:1;padding:11px;border-radius:12px;border:1px solid var(--line);background:var(--bg);font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;color:var(--text);display:flex;align-items:center;justify-content:center;gap:7px}
 .seg button.on-baki{background:#FFEBEE;border-color:var(--red);color:var(--red)}
@@ -84,7 +70,6 @@ input[type=text]{width:100%;padding:12px;border:1px solid var(--line);border-rad
 .backbtn{background:none;border:none;font-size:16px;cursor:pointer;color:var(--text);font-family:inherit;padding:6px 0;font-weight:700;display:inline-flex;align-items:center;gap:6px}
 .backbtn svg{width:18px;height:18px}
 .profile-top{text-align:center;padding:10px 0}
-.profile-top img{width:84px;height:84px;border-radius:50%;object-fit:cover;background:#eee}
 .profile-top h2{font-size:20px;margin-top:8px}
 .minirow{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:8px;animation:rowIn .25s ease-out both}
 .minirow .x{color:var(--red);background:none;border:none;cursor:pointer;padding:6px;display:flex;align-items:center}
@@ -94,26 +79,79 @@ input[type=text]{width:100%;padding:12px;border:1px solid var(--line);border-rad
 .swatches{display:flex;gap:10px;flex-wrap:wrap}
 .swatch{width:38px;height:38px;border-radius:50%;border:3px solid transparent;cursor:pointer}
 .swatch.sel{border-color:var(--text)}
-.chiprow{display:flex;gap:8px;flex-wrap:wrap}
-.chip{padding:8px 13px;border-radius:20px;border:1px solid var(--line);background:var(--bg);font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;color:var(--text)}
-.chip.sel{border-color:var(--accent);background:var(--accent);color:#fff}
-.creat-label{font-size:14px;font-weight:700;color:var(--muted);margin:14px 0 7px}
 #toast{position:fixed;left:50%;transform:translateX(-50%);bottom:92px;background:#222;color:#fff;padding:11px 16px;border-radius:24px;font-size:15px;z-index:40;display:none;align-items:center;gap:12px;max-width:92vw}
 #toast.show{display:flex;animation:toastUp .2s ease-out}
 #toast button{background:none;border:none;color:#FFD54F;font-weight:700;font-family:inherit;font-size:15px;cursor:pointer}
 #summaryBox{width:100%;min-height:150px;padding:10px;border:1px solid var(--line);border-radius:12px;font-family:inherit;font-size:14px;background:var(--card);color:var(--text);margin-top:8px;display:none}
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:25;display:none}
 .overlay.on{display:block}
+
+/* ===== v2: layout #3 two-column color cards ===== */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.card{border-radius:14px;padding:14px 12px;border:1px solid #e5e5e5;cursor:pointer;animation:rowIn .25s ease-out both}
+.card .nm{font-size:18px;font-weight:700;line-height:1.3;word-break:break-word}
+.card .sub{font-size:13px;color:var(--muted);margin-top:2px}
+.card .net2{font-size:15px;font-weight:700;margin-top:6px}
+.card .net2.red{color:var(--red)}
+.card .net2.green{color:var(--green)}
+.card .net2.zero{color:var(--muted)}
+/* ===== v2: color dots + name rows (entry sheet pick step) ===== */
+.namerow{display:flex;align-items:center;gap:11px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:8px;cursor:pointer;animation:rowIn .25s ease-out both}
+.namerow b{flex:1;font-size:16px;min-width:0;word-break:break-word}
+.namerow .freq{font-size:12px;color:var(--muted);white-space:nowrap}
+.cdot{display:inline-block;width:14px;height:14px;border-radius:50%;flex:0 0 14px;border:1px solid rgba(0,0,0,.15)}
+.cdot.big{width:24px;height:24px;flex:0 0 24px}
+.cdot.huge{width:52px;height:52px;flex:0 0 52px}
+/* ===== v2: color picker swatches ===== */
+.colorsw{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.colorsw .csw{width:38px;height:38px;border-radius:50%;border:3px solid transparent;cursor:pointer;padding:0}
+.colorsw .csw.sel{border-color:var(--text)}
+.fieldlbl{font-size:14px;font-weight:700;color:var(--muted);margin:14px 0 4px;display:block}
+.profile-top .cdot{display:block;margin:0 auto}
+/* profile old-baki row */
+.oldbaki-row{display:flex;align-items:center;justify-content:center;gap:8px;font-size:15px;margin-top:6px;color:var(--text)}
+.oldbaki-row b{font-size:16px}
+input[type=number]{width:100%;padding:12px;border:1px solid var(--line);border-radius:12px;font-family:inherit;font-size:16px;margin-top:10px;background:var(--card);color:var(--text)}
+
+
+/* ===== v2: layout #3 two-column color cards ===== */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.card{border-radius:14px;padding:14px 12px;border:1px solid #e5e5e5;cursor:pointer;animation:rowIn .25s ease-out both}
+.card .nm{font-size:18px;font-weight:700;line-height:1.3;word-break:break-word}
+.card .sub{font-size:13px;color:var(--muted);margin-top:2px}
+.card .net2{font-size:15px;font-weight:700;margin-top:6px}
+.card .net2.red{color:var(--red)}
+.card .net2.green{color:var(--green)}
+.card .net2.zero{color:var(--muted)}
+/* ===== v2: color dots + name rows (entry sheet pick step) ===== */
+.namerow{display:flex;align-items:center;gap:11px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:8px;cursor:pointer;animation:rowIn .25s ease-out both}
+.namerow b{flex:1;font-size:16px;min-width:0;word-break:break-word}
+.namerow .freq{font-size:12px;color:var(--muted);white-space:nowrap}
+.cdot{display:inline-block;width:14px;height:14px;border-radius:50%;flex:0 0 14px;border:1px solid rgba(0,0,0,.15)}
+.cdot.big{width:24px;height:24px;flex:0 0 24px}
+.cdot.huge{width:52px;height:52px;flex:0 0 52px}
+/* ===== v2: color picker swatches ===== */
+.colorsw{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.colorsw .csw{width:38px;height:38px;border-radius:50%;border:3px solid transparent;cursor:pointer;padding:0}
+.colorsw .csw.sel{border-color:var(--text)}
+.fieldlbl{font-size:14px;font-weight:700;color:var(--muted);margin:14px 0 4px;display:block}
+.profile-top .cdot{display:block;margin:0 auto}
+/* profile old-baki row */
+.oldbaki-row{display:flex;align-items:center;justify-content:center;gap:8px;font-size:15px;margin-top:6px;color:var(--text)}
+.oldbaki-row b{font-size:16px}
+input[type=number]{width:100%;padding:12px;border:1px solid var(--line);border-radius:12px;font-family:inherit;font-size:16px;margin-top:10px;background:var(--card);color:var(--text)}
+
 </style>
 </head>
+
 <body data-theme="green">
 <header>
   <div><h1>দোকান হিসাব</h1><div class="date" id="todayDate"></div></div>
-  <button class="icon-btn" id="settingsBtn" aria-label="সেটিংস"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
+  <button class="icon-btn" id="settingsBtn" aria-label="সেটিংস"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2 2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33-1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
 </header>
 
 <main>
-  <!-- HOME -->
+  <!-- HOME : layout #3 — two-column color cards -->
   <div class="view on" id="viewHome">
     <div class="totals">
       <div class="total red"><span>আজ বাকি গেলো</span><b id="totalBaki">৳০</b></div>
@@ -127,10 +165,19 @@ input[type=text]{width:100%;padding:12px;border:1px solid var(--line);border-rad
   <div class="view" id="viewProfile">
     <button class="backbtn" id="profileBack"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>ফিরুন</button>
     <div class="profile-top">
-      <img id="profileAvatar" src="" alt="">
+      <span class="cdot huge" id="profileDot"></span>
       <h2 id="profileName"></h2>
       <div id="profileTotal" style="font-size:19px;font-weight:700;color:var(--red)"></div>
       <div id="profileSub" style="font-size:14px;color:var(--muted);margin-top:2px"></div>
+      <div class="oldbaki-row">আগের বাকি: <b id="profileOldBaki">৳০</b><button class="linkbtn" id="editOldBakiBtn" style="padding:2px 0">বদলান</button></div>
+      <div id="oldBakiEdit" style="display:none;max-width:280px;margin:8px auto 0">
+        <input type="number" id="oldBakiInput" inputmode="numeric" min="0" placeholder="আগের বাকি — টাকা লিখুন" style="margin-top:0">
+        <button class="btn" id="saveOldBakiBtn" style="margin-top:8px">সেভ করুন</button>
+      </div>
+    </div>
+    <div class="setrow">
+      <b>রং বদলান</b>
+      <div class="colorsw" id="profileColorSwatches"></div>
     </div>
     <h2 class="sec">আজকের লেনদেন</h2>
     <div id="profileEntries"></div>
@@ -174,12 +221,12 @@ input[type=text]{width:100%;padding:12px;border:1px solid var(--line);border-rad
 <div class="sheet" id="sheetAdd">
   <h2 id="sheetAddTitle">বাকি লিখুন</h2>
   <div id="addStepPick">
-    <div class="avgrid" id="customerGrid"></div>
+    <div id="customerList"></div>
     <button class="linkbtn" id="newCustomerLink">+ নতুন কাস্টমার</button>
   </div>
   <div id="addStepCalc" style="display:none">
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
-      <img id="calcAvatar" src="" alt="" style="width:46px;height:46px;border-radius:50%;object-fit:cover">
+      <span class="cdot big" id="calcDot"></span>
       <b id="calcName" style="font-size:17px"></b>
     </div>
     <div class="seg" style="margin:8px 0">
@@ -204,42 +251,17 @@ input[type=text]{width:100%;padding:12px;border:1px solid var(--line);border-rad
 <div class="sheet" id="sheetCustomer">
   <h2>নতুন কাস্টমার</h2>
   <input type="text" id="newNameInput" placeholder="নাম লিখুন">
-  <div class="avgrid" id="avatarPicker" style="margin-top:12px"></div>
-  <div id="customAvatarRow" style="display:none;margin-top:10px;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px;text-align:center">
-    <img id="customAvatarImg" src="" alt="" style="width:64px;height:64px;border-radius:50%;object-fit:cover">
-    <div style="font-size:14px;font-weight:700;margin-top:4px">নিজের বানানো অবতার — এটাই বসবে</div>
-  </div>
-  <div style="display:flex;gap:10px;margin-top:10px">
-    <button class="linkbtn" id="creatorBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>নিজের অবতার বানান</button>
-    <button class="linkbtn" id="photoBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>ছবি থেকে অবতার নিন</button>
-  </div>
-  <input type="file" id="photoInput" accept="image/*" style="display:none">
+  <span class="fieldlbl">রং — নিজে থেকে বসেছে, চাইলে বদলাতে পারো</span>
+  <div class="colorsw" id="newCustomerColors"></div>
+  <span class="fieldlbl">আগের বাকি (যদি থাকে)</span>
+  <input type="number" id="newOldBakiInput" inputmode="numeric" min="0" placeholder="৳০ — না থাকলে খালি রাখো" style="margin-top:0">
   <button class="btn" id="saveCustomerBtn">কাস্টমার যোগ করুন</button>
-</div>
-
-<!-- CUSTOM AVATAR CREATOR SHEET -->
-<div class="sheet" id="sheetCreator">
-  <h2>নিজের অবতার বানান</h2>
-  <div style="text-align:center;padding:6px 0">
-    <img id="creatorPreview" src="" alt="" style="width:110px;height:110px;border-radius:50%;object-fit:cover;background:#eee;display:none">
-    <div id="creatorMsg" style="color:var(--muted);padding:26px 10px">অবতার বানানোর টুল লোড হচ্ছে…</div>
-  </div>
-  <div id="creatorOptions"></div>
-  <div style="display:flex;gap:10px;margin-top:16px">
-    <button class="btn ghost" id="creatorRandomBtn" style="margin-top:0;flex:1">অন্যরকম দেখান</button>
-    <button class="btn" id="creatorSaveBtn" style="margin-top:0;flex:1">এই অবতার নিন</button>
-  </div>
 </div>
 
 <div id="toast"><span id="toastMsg"></span><button id="toastUndo">Undo</button></div>
 
-<script type="module">
-import {Avatar as DiceAvatar, Style as DiceStyle} from './dicebear-core.mjs';
-(async function(){try{var r=await fetch('./avataaars.json');if(!r.ok)return;var def=await r.json();var style=new DiceStyle(def);window.__dicebear={ready:true,create:function(opts){try{return new DiceAvatar(style,opts).toString()}catch(e){return ''}}};}catch(e){}})();
-</script>
+
 <script>
-var AVATARS = [];
-for (var ai = 1; ai <= 20; ai++) { AVATARS.push('avatars/a' + (ai < 10 ? '0' + ai : ai) + '.svg'); }
 var STORE_KEY = 'dokanHisabV1';
 var BN_MONTHS = ['জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর'];
 var store = { customers: [], entries: [], dayStart: 0, theme: 'green', fontLarge: false };
@@ -247,62 +269,46 @@ var currentCustomerId = null;
 var entryType = 'baki';
 var calcExpr = '';
 var editingEntryId = null;
-var pickedAvatar = AVATARS[0];
-var pickedPhoto = null;
 var lastUndo = null;
 var toastTimer = null;
+var newCustColor = 0;
 
-var CREATOR_SKINS = ['#614335', '#d08b5b', '#ae5d29', '#edb98a', '#ffdbb4', '#fd9841', '#f8d25c'];
-var CREATOR_TOPS = [
-  { v: 'none', label: 'চুল নেই' },
-  { v: 'shortFlat', label: 'ছোট চুল' },
-  { v: 'shortCurly', label: 'কোঁকড়া' },
-  { v: 'shortRound', label: 'গোল ছোট' },
-  { v: 'shortWaved', label: 'ঢেউ' },
-  { v: 'sides', label: 'পাশে ছোট' },
-  { v: 'theCaesar', label: 'সিজার' },
-  { v: 'theCaesarAndSidePart', label: 'সিজার সিঁথি' },
-  { v: 'bigHair', label: 'বড় চুল' },
-  { v: 'curly', label: 'কোঁকড়া বড়' },
-  { v: 'fro', label: 'আফ্রো' },
-  { v: 'bob', label: 'বব' },
-  { v: 'straight01', label: 'সোজা' },
-  { v: 'longButNotTooLong', label: 'মাঝারি লম্বা' },
-  { v: 'bun', label: 'খোঁপা' },
-  { v: 'hijab', label: 'হিজাব' },
-  { v: 'turban', label: 'পাগড়ি' },
-  { v: 'hat', label: 'টুপি' },
-  { v: 'winterHat1', label: 'শীতের টুপি' }
+/* v2: per-customer colors — 10 distinct tints (bg = card tint, border = strong color) */
+var PALETTE = [
+  { bg: '#E8F5E9', border: '#66BB6A' },
+  { bg: '#E3F2FD', border: '#42A5F5' },
+  { bg: '#FFF3E0', border: '#FFA726' },
+  { bg: '#F3E5F5', border: '#AB47BC' },
+  { bg: '#FFEBEE', border: '#EF5350' },
+  { bg: '#E0F2F1', border: '#26A69A' },
+  { bg: '#FFF8E1', border: '#FFCA28' },
+  { bg: '#FCE4EC', border: '#EC407A' },
+  { bg: '#EDE7F6', border: '#7E57C2' },
+  { bg: '#EFEBE9', border: '#8D6E63' }
 ];
-var CREATOR_BEARD = [
-  { v: 'none', label: 'নেই' },
-  { v: 'beardLight', label: 'হালকা দাড়ি' },
-  { v: 'beardMedium', label: 'মাঝারি দাড়ি' },
-  { v: 'beardMajestic', label: 'বড় দাড়ি' },
-  { v: 'moustacheFancy', label: 'গোঁফ' },
-  { v: 'moustacheMagnum', label: 'বড় গোঁফ' }
-];
-var CREATOR_EYES = [
-  { v: 'default', label: 'সাধারণ' },
-  { v: 'happy', label: 'হাসি' },
-  { v: 'wink', label: 'চোখ টিপ' },
-  { v: 'surprised', label: 'অবাক' },
-  { v: 'side', label: 'পাশে' },
-  { v: 'closed', label: 'বন্ধ' },
-  { v: 'squint', label: 'সরু' }
-];
-var CREATOR_MOUTH = [
-  { v: 'smile', label: 'হাসি' },
-  { v: 'default', label: 'সাধারণ' },
-  { v: 'serious', label: 'গম্ভীর' },
-  { v: 'concerned', label: 'চিন্তিত' },
-  { v: 'sad', label: 'দুঃখী' },
-  { v: 'tongue', label: 'জিভ' },
-  { v: 'eating', label: 'খাচ্ছে' }
-];
-var CREATOR_BG = ['b6e3f4', 'ffd5dc', 'ffdfbf', 'c0aede', 'd1d4f9', 'ffffff'];
-var creatorOpts = { skin: '#d08b5b', top: 'shortFlat', beard: 'none', eyes: 'default', mouth: 'smile', bg: 'b6e3f4', seed: 'dokan1' };
-var creatorSvg = '';
+function colorOf(c) {
+  var i = (c && typeof c.color === 'number' && c.color >= 0 && c.color < PALETTE.length) ? c.color : 0;
+  return PALETTE[i];
+}
+/* least-used color among customers; never the same as the most recently added customer's */
+function nextColorIdx() {
+  var counts = [];
+  for (var i = 0; i < PALETTE.length; i++) { counts.push(0); }
+  store.customers.forEach(function (c) {
+    if (typeof c.color === 'number' && c.color >= 0 && c.color < PALETTE.length) { counts[c.color]++; }
+  });
+  var lastColor = null, lastAt = -1;
+  store.customers.forEach(function (c) {
+    if (c.createdAt > lastAt) { lastAt = c.createdAt; lastColor = (typeof c.color === 'number') ? c.color : null; }
+  });
+  var best = -1, bestCount = Infinity;
+  for (var j = 0; j < PALETTE.length; j++) {
+    if (j === lastColor) { continue; }
+    if (counts[j] < bestCount) { bestCount = counts[j]; best = j; }
+  }
+  if (best === -1) { best = ((lastColor == null ? -1 : lastColor) + 1) % PALETTE.length; }
+  return best;
+}
 
 function bnDigits(s) {
   return String(s).replace(/[0-9]/g, function (d) { return '০১২৩৪৫৬৭৮৯'[Number(d)]; });
@@ -343,6 +349,17 @@ function loadStore() {
   if (!store.entries) { store.entries = []; }
   if (!store.customers) { store.customers = []; }
   if (!store.theme) { store.theme = 'green'; }
+  /* v2 migration: every customer gets a color + oldBaki (v1 data carries over) */
+  var changed = false;
+  store.customers.forEach(function (c) {
+    if (typeof c.color !== 'number' || c.color < 0 || c.color >= PALETTE.length) {
+      c.color = nextColorIdx();
+      changed = true;
+    }
+    if (typeof c.oldBaki !== 'number' || isNaN(c.oldBaki)) { c.oldBaki = 0; changed = true; }
+    if (typeof c.createdAt !== 'number') { c.createdAt = 0; changed = true; }
+  });
+  if (changed) { saveStore(); }
 }
 function saveStore() {
   try { localStorage.setItem(STORE_KEY, JSON.stringify(store)); } catch (e) {}
@@ -395,14 +412,104 @@ function customerTodayTotal(customerId) {
   });
   return { baki: baki, paid: paid, net: baki - paid };
 }
+/* v2: net = আগের বাকি + আজ নিয়েছে − আজ দিয়েছে (old may be negative = we owe them) */
+function customerNet(customerId) {
+  var c = customerById(customerId);
+  var old = c ? (Number(c.oldBaki) || 0) : 0;
+  var t = customerTodayTotal(customerId);
+  return { old: old, baki: t.baki, paid: t.paid, net: old + t.baki - t.paid };
+}
+/* v2: unpaid day-net rolls into আগের বাকি so no money is lost; today's entries reset */
+function rolloverDay() {
+  store.customers.forEach(function (c) {
+    c.oldBaki = customerNet(c.id).net;
+  });
+  store.dayStart = Date.now();
+  saveStore();
+}
 function el(id) { return document.getElementById(id); }
 function esc(s) {
   return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
-function avatarSrc(c) { return c.avatar || AVATARS[0]; }
 function iconSvg(n) {
   if (n === 'x') { return '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>'; }
   return '';
+}
+
+/* ================= v2: history-based in-app navigation =================
+   Every view/sheet pushes a history state. System back pops to the previous
+   view and ends at home. ON HOME back is TRAPPED: the guard state is
+   re-pushed, so back NEVER exits the website. */
+var currentView = 'home';
+var currentSheet = null;
+var sheetOnStack = false;
+function navState() { return { v: currentView, cid: currentCustomerId, sheet: currentSheet }; }
+function pushNav() { history.pushState(navState(), ''); }
+function renderState(s) {
+  currentView = (s && s.v) || 'home';
+  currentCustomerId = (s && s.cid) || null;
+  currentSheet = (s && s.sheet) || null;
+  sheetOnStack = !!currentSheet;
+  if (currentSheet) { openSheetUI(currentSheet); } else { closeSheetsUI(); }
+  if (currentView === 'profile' && currentCustomerId) { showView('viewProfile'); renderProfile(currentCustomerId); }
+  else if (currentView === 'settings') { showView('viewSettings'); }
+  else { showView('viewHome'); renderHome(); }
+}
+function armHomeGuard() {
+  history.pushState({ v: 'home', guard: 1 }, '');
+}
+if (typeof window !== 'undefined' && window.addEventListener) {
+  window.addEventListener('popstate', function (e) {
+    var s = (e && e.state) || { v: 'home' };
+    if (s.v === 'home' && !s.sheet && !s.guard) {
+      /* back pressed while already on home (root reached) — stay, re-arm guard */
+      renderState({ v: 'home' });
+      armHomeGuard();
+      return;
+    }
+    renderState(s);
+  });
+}
+/* Agradia pattern: in-app back uses history.back() with a home fallback */
+function goBack() {
+  var popped = false;
+  function onPop() { popped = true; window.removeEventListener('popstate', onPop); }
+  window.addEventListener('popstate', onPop);
+  history.back();
+  setTimeout(function () {
+    if (!popped) {
+      window.removeEventListener('popstate', onPop);
+      currentView = 'home'; currentSheet = null;
+      renderState(navState());
+      armHomeGuard();
+    }
+  }, 500);
+}
+function openSheetNav(id) {
+  currentSheet = id;
+  pushNav();
+  sheetOnStack = true;
+  openSheetUI(id);
+}
+function replaceSheetNav(id) {
+  currentSheet = id;
+  history.replaceState(navState(), '');
+  sheetOnStack = true;
+  openSheetUI(id);
+}
+function closeSheetNav() {
+  closeSheetsUI();
+  if (sheetOnStack) { sheetOnStack = false; history.back(); }
+}
+function openSheetUI(id) {
+  closeSheetsUI();
+  el('overlay').classList.add('on');
+  el(id).classList.add('on');
+}
+function closeSheetsUI() {
+  el('overlay').classList.remove('on');
+  el('sheetAdd').classList.remove('on');
+  el('sheetCustomer').classList.remove('on');
 }
 
 function renderHome() {
@@ -415,68 +522,75 @@ function renderHome() {
   el('totalBaki').textContent = fmtTk(baki);
   el('totalPaid').textContent = fmtTk(paid);
   var box = el('entryList');
-  if (!list.length) {
+  var freq = freqMap();
+  var cids = [];
+  list.forEach(function (e) { if (cids.indexOf(e.customerId) === -1) { cids.push(e.customerId); } });
+  var last = {};
+  store.entries.forEach(function (e) {
+    if (!last[e.customerId] || e.ts > last[e.customerId]) { last[e.customerId] = e.ts; }
+  });
+  cids.sort(function (a, b) {
+    var fa = freq[a] || 0, fb = freq[b] || 0;
+    if (fb !== fa) { return fb - fa; }
+    return (last[b] || 0) - (last[a] || 0);
+  });
+  if (!cids.length) {
+    box.className = '';
     box.innerHTML = '<div class="empty">আজ এখনো কোনো লেনদেন নেই<br>+ চাপ দিয়ে শুরু করো</div>';
     return;
   }
+  box.className = 'grid2';
   var html = '';
-  list.forEach(function (e) {
-    var c = customerById(e.customerId);
+  cids.forEach(function (cid) {
+    var c = customerById(cid);
     if (!c) { return; }
-    var cls = e.type === 'baki' ? 'red' : 'green';
-    var label = e.type === 'baki' ? 'বাকি নিলো' : 'দিয়ে দিলো';
-    var item = e.item ? ' • ' + esc(e.item) : '';
-    html += '<div class="row" data-cid="' + c.id + '">'
-      + '<img class="av" src="' + esc(avatarSrc(c)) + '" alt="">'
-      + '<div class="nm"><b>' + esc(c.name) + '</b><span>' + fmtTime(e.ts) + ' • ' + periodLabel(e.ts) + item + '</span></div>'
-      + '<div class="amt ' + cls + '">' + fmtTk(e.amount) + '<small>' + label + '</small></div>'
-      + '</div>';
+    var col = colorOf(c);
+    var n = customerNet(cid);
+    var netHtml;
+    if (n.net > 0) { netHtml = '<div class="net2 red">আমি পাবো ' + fmtTk(n.net) + '</div>'; }
+    else if (n.net < 0) { netHtml = '<div class="net2 green">সে পাবে ' + fmtTk(-n.net) + '</div>'; }
+    else { netHtml = '<div class="net2 zero">হিসাব মিলেছে</div>'; }
+    html += '<div class="card" data-cid="' + c.id + '" style="background:' + col.bg + ';border-color:' + col.border + '">'
+      + '<div class="nm">' + esc(c.name) + '</div>'
+      + '<div class="sub">' + bnDigits(freq[cid] || 0) + ' বার এসেছে</div>'
+      + netHtml + '</div>';
   });
   box.innerHTML = html;
-  var rows = box.querySelectorAll('.row');
-  rows.forEach(function (r) {
-    r.addEventListener('click', function () { openProfile(r.getAttribute('data-cid')); });
+  var cards = box.querySelectorAll('.card');
+  cards.forEach(function (card) {
+    card.addEventListener('click', function () { openProfile(card.getAttribute('data-cid')); });
   });
 }
-function renderCustomerGrid() {
-  var grid = el('customerGrid');
+function renderCustomerList() {
+  var box = el('customerList');
   var list = sortedCustomers();
   if (!list.length) {
-    grid.innerHTML = '<div style="grid-column:1/-1;color:var(--muted);text-align:center;padding:10px">এখনো কোনো কাস্টমার নেই — নিচে “নতুন কাস্টমার” চাপো</div>';
+    box.innerHTML = '<div style="color:var(--muted);text-align:center;padding:10px">এখনো কোনো কাস্টমার নেই — নিচে “নতুন কাস্টমার” চাপো</div>';
     return;
   }
+  var freq = freqMap();
   var html = '';
   list.forEach(function (c) {
-    html += '<div class="avcell" data-cid="' + c.id + '"><img src="' + esc(avatarSrc(c)) + '" alt=""><span>' + esc(c.name) + '</span></div>';
+    var col = colorOf(c);
+    html += '<div class="namerow" data-cid="' + c.id + '"><span class="cdot" style="background:' + col.border + '"></span><b>' + esc(c.name) + '</b><span class="freq">' + bnDigits(freq[c.id] || 0) + ' বার</span></div>';
   });
-  grid.innerHTML = html;
-  var cells = grid.querySelectorAll('.avcell');
-  cells.forEach(function (cell) {
-    cell.addEventListener('click', function () { pickCustomer(cell.getAttribute('data-cid')); });
+  box.innerHTML = html;
+  var rows = box.querySelectorAll('.namerow');
+  rows.forEach(function (row) {
+    row.addEventListener('click', function () { pickCustomer(row.getAttribute('data-cid')); });
   });
 }
-function renderAvatarPicker() {
-  var grid = el('avatarPicker');
+function renderColorPicker(containerId, selectedIdx, onPick) {
+  var box = el(containerId);
   var html = '';
-  AVATARS.forEach(function (src) {
-    html += '<div class="avcell' + (pickedAvatar === src && !pickedPhoto ? ' sel' : '') + '" data-av="' + src + '"><img src="' + src + '" alt=""></div>';
+  PALETTE.forEach(function (p, i) {
+    html += '<button type="button" class="csw' + (i === selectedIdx ? ' sel' : '') + '" data-ci="' + i + '" style="background:' + p.border + '" aria-label="রং ' + (i + 1) + '"></button>';
   });
-  grid.innerHTML = html;
-  var cells = grid.querySelectorAll('.avcell');
-  cells.forEach(function (cell) {
-    cell.addEventListener('click', function () {
-      pickedAvatar = cell.getAttribute('data-av');
-      pickedPhoto = null;
-      renderAvatarPicker();
-    });
+  box.innerHTML = html;
+  var btns = box.querySelectorAll('.csw');
+  btns.forEach(function (b) {
+    b.addEventListener('click', function () { onPick(Number(b.getAttribute('data-ci'))); });
   });
-  var row = el('customAvatarRow');
-  if (pickedAvatar && pickedAvatar.indexOf('data:') === 0) {
-    row.style.display = 'block';
-    el('customAvatarImg').src = pickedAvatar;
-  } else {
-    row.style.display = 'none';
-  }
 }
 function showView(name) {
   var views = ['viewHome', 'viewProfile', 'viewSettings'];
@@ -485,22 +599,11 @@ function showView(name) {
   el('fabBtn').style.display = (name === 'viewHome') ? 'block' : 'none';
   window.scrollTo(0, 0);
 }
-function openSheet(id) {
-  closeSheets();
-  el('overlay').classList.add('on');
-  el(id).classList.add('on');
-}
-function closeSheets() {
-  el('overlay').classList.remove('on');
-  el('sheetAdd').classList.remove('on');
-  el('sheetCustomer').classList.remove('on');
-  el('sheetCreator').classList.remove('on');
-}
 function pickCustomer(cid) {
   currentCustomerId = cid;
   editingEntryId = null;
   var c = customerById(cid);
-  el('calcAvatar').src = avatarSrc(c);
+  el('calcDot').style.background = colorOf(c).border;
   el('calcName').textContent = c.name;
   setEntryType('baki');
   calcReset();
@@ -595,7 +698,7 @@ function saveEntry() {
     lastUndo = { kind: 'add', entry: e };
   }
   saveStore();
-  closeSheets();
+  closeSheetNav();
   renderHome();
   if (currentCustomerId) { renderProfile(currentCustomerId); }
   showToast('সংরক্ষণ হয়েছে', function () {
@@ -613,7 +716,7 @@ function editEntry(entryId) {
   if (!c) { return; }
   currentCustomerId = c.id;
   editingEntryId = entryId;
-  el('calcAvatar').src = avatarSrc(c);
+  el('calcDot').style.background = colorOf(c).border;
   el('calcName').textContent = c.name;
   setEntryType(e.type);
   calcExpr = String(e.amount);
@@ -621,7 +724,7 @@ function editEntry(entryId) {
   el('itemInput').value = e.item || '';
   el('addStepPick').style.display = 'none';
   el('addStepCalc').style.display = 'block';
-  openSheet('sheetAdd');
+  openSheetNav('sheetAdd');
 }
 function deleteEntry(entryId) {
   var e = null;
@@ -643,28 +746,39 @@ function deleteEntry(entryId) {
 }
 function openProfile(cid) {
   currentCustomerId = cid;
-  renderProfile(cid);
-  showView('viewProfile');
+  currentView = 'profile';
+  currentSheet = null;
+  pushNav();
+  renderState(navState());
 }
 function renderProfile(cid) {
   var c = customerById(cid);
   if (!c) { return; }
-  el('profileAvatar').src = avatarSrc(c);
+  var col = colorOf(c);
+  el('profileDot').style.background = col.border;
   el('profileName').textContent = c.name;
-  var t = customerTodayTotal(cid);
+  var n = customerNet(cid);
   var totalEl = el('profileTotal');
-  if (t.net > 0) {
-    totalEl.textContent = 'আমি পাবো ' + fmtTk(t.net);
+  if (n.net > 0) {
+    totalEl.textContent = 'আমি পাবো ' + fmtTk(n.net);
     totalEl.style.color = 'var(--red)';
-  } else if (t.net < 0) {
-    totalEl.textContent = 'সে পাবে ' + fmtTk(-t.net);
+  } else if (n.net < 0) {
+    totalEl.textContent = 'সে পাবে ' + fmtTk(-n.net);
     totalEl.style.color = 'var(--green)';
   } else {
     totalEl.textContent = 'আজ কোনো বাকি নেই';
     totalEl.style.color = 'var(--green)';
   }
-  el('profileSub').textContent = 'নিয়েছে ' + fmtTk(t.baki) + ' • দিয়েছে ' + fmtTk(t.paid);
-  el('payAllBtn').style.display = t.net > 0 ? 'block' : 'none';
+  el('profileSub').textContent = 'নিয়েছে ' + fmtTk(n.baki) + ' • দিয়েছে ' + fmtTk(n.paid);
+  el('profileOldBaki').textContent = fmtTk(n.old);
+  el('oldBakiEdit').style.display = 'none';
+  el('payAllBtn').style.display = n.net > 0 ? 'block' : 'none';
+  renderColorPicker('profileColorSwatches', (typeof c.color === 'number' ? c.color : 0), function (idx) {
+    c.color = idx;
+    saveStore();
+    renderProfile(cid);
+    renderHome();
+  });
   var list = todayEntries().filter(function (e) { return e.customerId === cid; });
   var box = el('profileEntries');
   if (!list.length) {
@@ -701,9 +815,9 @@ function renderProfile(cid) {
   });
 }
 function payAll(cid) {
-  var t = customerTodayTotal(cid);
-  if (t.net <= 0) { return; }
-  store.entries.push({ id: 'e' + Date.now(), customerId: cid, type: 'paid', amount: t.net, item: 'পুরো শোধ', ts: Date.now() });
+  var n = customerNet(cid);
+  if (n.net <= 0) { return; }
+  store.entries.push({ id: 'e' + Date.now(), customerId: cid, type: 'paid', amount: n.net, item: 'পুরো শোধ', ts: Date.now() });
   saveStore();
   renderHome();
   renderProfile(cid);
@@ -716,7 +830,7 @@ function buildSummary() {
   list.forEach(function (e) {
     var c = customerById(e.customerId);
     var name = c ? c.name : 'অজানা';
-    if (!per[name]) { per[name] = { baki: 0, paid: 0 }; }
+    if (!per[name]) { per[name] = { baki: 0, paid: 0, old: 0, id: e.customerId }; }
     if (e.type === 'baki') { baki += e.amount; per[name].baki += e.amount; }
     else { paid += e.amount; per[name].paid += e.amount; }
   });
@@ -725,10 +839,20 @@ function buildSummary() {
   lines.push('আজ বাকি গেলো: ' + fmtTk(baki));
   lines.push('আজ আদায়: ' + fmtTk(paid));
   lines.push('আজ মোট পাবো: ' + fmtTk(baki - paid));
+  var oldTotal = 0, netTotal = 0;
+  Object.keys(per).forEach(function (name) {
+    var p = per[name];
+    var cc = customerById(p.id);
+    p.old = cc ? (Number(cc.oldBaki) || 0) : 0;
+    oldTotal += p.old;
+    netTotal += p.old + p.baki - p.paid;
+  });
+  if (oldTotal !== 0) { lines.push('আগের বাকিসহ মোট পাবো: ' + fmtTk(netTotal)); }
   lines.push('---');
   Object.keys(per).forEach(function (name) {
     var p = per[name];
     var parts = [];
+    if (p.old) { parts.push('আগের বাকি ' + fmtTk(p.old)); }
     if (p.baki) { parts.push('বাকি ' + fmtTk(p.baki)); }
     if (p.paid) { parts.push('দিয়েছে ' + fmtTk(p.paid)); }
     lines.push(name + ' — ' + parts.join(', '));
@@ -757,185 +881,52 @@ function showToast(msg, undoFn) {
   if (toastTimer) { clearTimeout(toastTimer); }
   toastTimer = setTimeout(function () { t.classList.remove('show'); }, 5000);
 }
-function downscalePhoto(file, done) {
-  var reader = new FileReader();
-  reader.onload = function () {
-    var img = new Image();
-    img.onload = function () {
-      var s = 128;
-      var cv = document.createElement('canvas');
-      cv.width = s; cv.height = s;
-      var ctx = cv.getContext('2d');
-      var side = Math.min(img.width, img.height);
-      var sx = (img.width - side) / 2, sy = (img.height - side) / 2;
-      ctx.drawImage(img, sx, sy, side, side, 0, 0, s, s);
-      done(cv.toDataURL('image/jpeg', 0.8));
-    };
-    img.src = reader.result;
-  };
-  reader.readAsDataURL(file);
+function pickNewColor(idx) {
+  newCustColor = idx;
+  renderColorPicker('newCustomerColors', newCustColor, pickNewColor);
 }
-function saveCustomer() {
-  var name = el('newNameInput').value.trim();
+function saveCustomer() {  var name = el('newNameInput').value.trim();
   if (!name) { showToast('নাম লিখুন'); return; }
-  var c = { id: 'c' + Date.now(), name: name, avatar: pickedPhoto || pickedAvatar, createdAt: Date.now() };
+  var oldRaw = el('newOldBakiInput').value;
+  var oldBaki = Math.max(0, Math.round(Number(oldRaw) || 0));
+  var c = { id: 'c' + Date.now(), name: name, color: newCustColor, oldBaki: oldBaki, createdAt: Date.now() };
   store.customers.push(c);
   saveStore();
-  pickedPhoto = null;
   el('newNameInput').value = '';
-  closeSheets();
-  renderCustomerGrid();
+  el('newOldBakiInput').value = '';
   pickCustomer(c.id);
-  openSheet('sheetAdd');
-}
-function diceCreate(opts) {
-  // Agradia-proven DiceBear v10 mapping: *Variant arrays + *Probability,
-  // colors as ['#hex']. 'none' = dummy variant with probability 0.
-  try {
-    if (typeof window === 'undefined' || !window.__dicebear || !window.__dicebear.ready) { return ''; }
-    var skin = String(opts.skin || 'd08b5b').replace('#', '');
-    var bg = String(opts.bg || 'b6e3f4').replace('#', '');
-    var o = { seed: opts.seed || 'dokan', idRandomization: true };
-    o.topVariant = [opts.top === 'none' ? 'shortFlat' : opts.top];
-    o.topProbability = opts.top === 'none' ? 0 : 100;
-    o.hairColor = ['#2b1d16'];
-    o.skinColor = ['#' + skin];
-    o.eyebrowsVariant = ['default']; o.eyebrowsProbability = 100;
-    o.eyesVariant = [opts.eyes]; o.eyesProbability = 100;
-    o.mouthVariant = [opts.mouth]; o.mouthProbability = 100;
-    o.accessoriesVariant = ['eyepatch']; o.accessoriesProbability = 0;
-    if (opts.beard === 'none') { o.facialHairVariant = ['beardLight']; o.facialHairProbability = 0; }
-    else { o.facialHairVariant = [opts.beard]; o.facialHairProbability = 100; }
-    o.facialHairColor = ['#2b1d16'];
-    o.clothesVariant = ['shirtCrewNeck']; o.clothesProbability = 100;
-    o.clothesColor = ['#145da0'];
-    o.clothesGraphicVariant = ['bat']; o.clothesGraphicProbability = 0;
-    o.backgroundColor = ['#' + bg];
-    return window.__dicebear.create(o) || '';
-  } catch (e) { return ''; }
-}
-function renderCreatorPreview() {
-  var svg = diceCreate(creatorOpts);
-  var img = el('creatorPreview');
-  var msg = el('creatorMsg');
-  if (!svg) {
-    img.style.display = 'none';
-    msg.style.display = 'block';
-    msg.textContent = 'অবতার বানানোর টুল লোড হচ্ছে… না হলে একটু পরে আবার চেষ্টা করুন।';
-    return false;
-  }
-  creatorSvg = svg;
-  img.style.display = 'block';
-  msg.style.display = 'none';
-  img.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
-  return true;
-}
-function renderCreatorOptions() {
-  var box = el('creatorOptions');
-  var html = '';
-  html += '<div class="creat-label">গায়ের রং</div><div class="chiprow" data-group="skin">';
-  CREATOR_SKINS.forEach(function (c) {
-    html += '<div class="swatch' + (creatorOpts.skin === c ? ' sel' : '') + '" data-v="' + c + '" style="background:' + c + '"></div>';
-  });
-  html += '</div>';
-  function chipGroup(label, group, list, cur) {
-    var h = '<div class="creat-label">' + label + '</div><div class="chiprow" data-group="' + group + '">';
-    list.forEach(function (o) {
-      h += '<button class="chip' + (cur === o.v ? ' sel' : '') + '" data-v="' + o.v + '">' + o.label + '</button>';
-    });
-    return h + '</div>';
-  }
-  html += chipGroup('চুল / টুপি', 'top', CREATOR_TOPS, creatorOpts.top);
-  html += chipGroup('দাড়ি / গোঁফ', 'beard', CREATOR_BEARD, creatorOpts.beard);
-  html += chipGroup('চোখ', 'eyes', CREATOR_EYES, creatorOpts.eyes);
-  html += chipGroup('মুখ', 'mouth', CREATOR_MOUTH, creatorOpts.mouth);
-  html += '<div class="creat-label">ব্যাকগ্রাউন্ড</div><div class="chiprow" data-group="bg">';
-  CREATOR_BG.forEach(function (c) {
-    html += '<div class="swatch' + (creatorOpts.bg === c ? ' sel' : '') + '" data-v="' + c + '" style="background:#' + c + ';border-color:#ccc"></div>';
-  });
-  html += '</div>';
-  box.innerHTML = html;
-  var rows = box.querySelectorAll('[data-group]');
-  rows.forEach(function (row) {
-    var group = row.getAttribute('data-group');
-    var items = row.querySelectorAll('[data-v]');
-    items.forEach(function (it) {
-      it.addEventListener('click', function () {
-        creatorOpts[group] = it.getAttribute('data-v');
-        renderCreatorOptions();
-        renderCreatorPreview();
-      });
-    });
-  });
-}
-function openCreator() {
-  closeSheets();
-  renderCreatorOptions();
-  openSheet('sheetCreator');
-  if (!renderCreatorPreview()) {
-    var tries = 0;
-    var timer = setInterval(function () {
-      tries++;
-      if (renderCreatorPreview() || tries > 20) { clearInterval(timer); }
-    }, 500);
-  }
-}
-function creatorRandom() {
-  function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
-  creatorOpts.top = pick(CREATOR_TOPS).v;
-  creatorOpts.beard = pick(CREATOR_BEARD).v;
-  creatorOpts.eyes = pick(CREATOR_EYES).v;
-  creatorOpts.mouth = pick(CREATOR_MOUTH).v;
-  creatorOpts.bg = pick(CREATOR_BG);
-  creatorOpts.seed = 'dokan' + Math.floor(Math.random() * 100000);
-  renderCreatorOptions();
-  renderCreatorPreview();
-}
-function creatorSave() {
-  if (!creatorSvg) {
-    if (!renderCreatorPreview()) { showToast('অবতার এখনো তৈরি হয়নি'); return; }
-  }
-  pickedAvatar = 'data:image/svg+xml;utf8,' + encodeURIComponent(creatorSvg);
-  pickedPhoto = null;
-  closeSheets();
-  renderAvatarPicker();
-  openSheet('sheetCustomer');
-  showToast('অবতার বেছে নেওয়া হয়েছে');
+  replaceSheetNav('sheetAdd');
 }
 function init() {
   loadStore();
   applySettings();
   renderHome();
   el('todayDate').textContent = bnDateStr(new Date());
+  /* v2: arm the home guard so Android back on home never exits the site */
+  if (typeof history !== 'undefined' && history.replaceState) {
+    history.replaceState({ v: 'home' }, '');
+    armHomeGuard();
+  }
   el('fabBtn').addEventListener('click', function () {
     el('addStepPick').style.display = 'block';
     el('addStepCalc').style.display = 'none';
-    renderCustomerGrid();
-    openSheet('sheetAdd');
+    renderCustomerList();
+    openSheetNav('sheetAdd');
   });
-  el('overlay').addEventListener('click', closeSheets);
-  el('settingsBtn').addEventListener('click', function () { showView('viewSettings'); });
-  el('settingsBack').addEventListener('click', function () { showView('viewHome'); });
-  el('profileBack').addEventListener('click', function () { showView('viewHome'); });
+  el('overlay').addEventListener('click', closeSheetNav);
+  el('settingsBtn').addEventListener('click', function () {
+    currentView = 'settings'; currentSheet = null;
+    pushNav();
+    renderState(navState());
+  });
+  el('settingsBack').addEventListener('click', goBack);
+  el('profileBack').addEventListener('click', goBack);
   el('newCustomerLink').addEventListener('click', function () {
-    closeSheets();
-    pickedAvatar = AVATARS[0];
-    pickedPhoto = null;
-    renderAvatarPicker();
-    openSheet('sheetCustomer');
-  });
-  el('creatorBtn').addEventListener('click', openCreator);
-  el('creatorRandomBtn').addEventListener('click', creatorRandom);
-  el('creatorSaveBtn').addEventListener('click', creatorSave);
-  el('photoBtn').addEventListener('click', function () { el('photoInput').click(); });
-  el('photoInput').addEventListener('change', function () {
-    var f = el('photoInput').files && el('photoInput').files[0];
-    if (!f) { return; }
-    downscalePhoto(f, function (url) {
-      pickedPhoto = url;
-      renderAvatarPicker();
-      showToast('ছবি অবতার হিসেবে বসানো হয়েছে');
-    });
+    newCustColor = nextColorIdx();
+    el('newNameInput').value = '';
+    el('newOldBakiInput').value = '';
+    renderColorPicker('newCustomerColors', newCustColor, pickNewColor);
+    replaceSheetNav('sheetCustomer');
   });
   el('saveCustomerBtn').addEventListener('click', saveCustomer);
   el('typeBaki').addEventListener('click', function () { setEntryType('baki'); });
@@ -945,13 +936,29 @@ function init() {
     editingEntryId = null;
     el('addStepPick').style.display = 'block';
     el('addStepCalc').style.display = 'none';
-    renderCustomerGrid();
+    renderCustomerList();
   });
   var keys = el('keypad').querySelectorAll('button');
   keys.forEach(function (b) {
     b.addEventListener('click', function () { calcPress(b.getAttribute('data-k')); });
   });
   el('payAllBtn').addEventListener('click', function () { payAll(currentCustomerId); });
+  el('editOldBakiBtn').addEventListener('click', function () {
+    var c = customerById(currentCustomerId);
+    if (!c) { return; }
+    el('oldBakiInput').value = String(Number(c.oldBaki) || 0);
+    el('oldBakiEdit').style.display = 'block';
+  });
+  el('saveOldBakiBtn').addEventListener('click', function () {
+    var c = customerById(currentCustomerId);
+    if (!c) { return; }
+    var v = Math.round(Number(el('oldBakiInput').value) || 0);
+    c.oldBaki = v;
+    saveStore();
+    renderProfile(currentCustomerId);
+    renderHome();
+    showToast('আগের বাকি সেভ হয়েছে');
+  });
   var sws = document.querySelectorAll('#themeSwatches .swatch');
   sws.forEach(function (s) {
     s.addEventListener('click', function () {
@@ -963,9 +970,8 @@ function init() {
   el('fontNormal').addEventListener('click', function () { store.fontLarge = false; saveStore(); applySettings(); });
   el('fontLarge').addEventListener('click', function () { store.fontLarge = true; saveStore(); applySettings(); });
   el('newDayBtn').addEventListener('click', function () {
-    if (typeof confirm === 'function' && !confirm('নতুন দিন শুরু করবে? আজকের লিস্ট খালি হয়ে যাবে (আগের হিসাব সাজানোর কাজে থাকবে)।')) { return; }
-    store.dayStart = Date.now();
-    saveStore();
+    if (typeof confirm === 'function' && !confirm('নতুন দিন শুরু করবে? আজকের না-মেটা বাকি আগের বাকিতে চলে যাবে, আর আজকের লিস্ট খালি হয়ে যাবে।')) { return; }
+    rolloverDay();
     renderHome();
     showToast('নতুন দিন শুরু হয়েছে');
   });
@@ -980,7 +986,7 @@ function init() {
     } else { box.select(); done(); }
   });
   el('clearTodayBtn').addEventListener('click', function () {
-    if (typeof confirm === 'function' && !confirm('আজকের সব লেনদেন মুছে ফেলবে?')) { return; }
+    if (typeof confirm === 'function' && !confirm('আজকের সব লেনদেন মুছে ফেলবে? (আগের বাকি মুছবে না)')) { return; }
     var tk = dayKey(Date.now());
     var ds = effectiveDayStart();
     store.entries = store.entries.filter(function (e) { return !(dayKey(e.ts) === tk && e.ts >= ds); });
@@ -993,6 +999,7 @@ function init() {
   }
 }
 if (typeof document !== 'undefined') { init(); }
+
 </script>
 </body>
 </html>
